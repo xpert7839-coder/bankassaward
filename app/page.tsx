@@ -110,8 +110,6 @@ export default function BankassAwards() {
           {currentPage === "vote" && (
             <VoteSection
               currentUser={currentUser}
-              votes={votes}
-              setVotes={() => {}} // Les votes sont gérés par le hook
               setCurrentPage={setCurrentPage}
               categories={categories}
               leadershipRevealed={leadershipRevealed}

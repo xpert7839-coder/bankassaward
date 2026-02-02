@@ -2,16 +2,17 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Check, Vote, AlertCircle, Trophy, Sparkles, ChevronDown, X, Lock } from "lucide-react"
+import { Check, Vote as VoteIcon, AlertCircle, Trophy, Sparkles, ChevronDown, X, Lock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { AudioPreview } from "@/components/audio-preview"
-import type { Page, User as UserType, Vote as VoteType } from "@/app/page"
+import type { User, Vote } from "@/hooks/use-api-data"
 import type { Category, Candidate } from "@/lib/categories"
+import { useVotes } from "@/hooks/use-api-data"
+
+import type { Page } from "@/app/page"
 
 interface VoteSectionProps {
-  currentUser: UserType | null
-  votes: VoteType[]
-  setVotes: (votes: VoteType[]) => void
+  currentUser: User | null
   setCurrentPage: (page: Page) => void
   categories: Category[]
   leadershipRevealed: boolean
@@ -19,12 +20,11 @@ interface VoteSectionProps {
 
 export function VoteSection({
   currentUser,
-  votes,
-  setVotes,
   setCurrentPage,
   categories,
   leadershipRevealed,
 }: VoteSectionProps) {
+  const { votes, refetch: refetchVotes } = useVotes()
   const [selectedCandidates, setSelectedCandidates] = useState<Record<string, string>>({})
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
@@ -64,20 +64,33 @@ export function VoteSection({
     return votes.find((v) => v.userId === currentUser.id && v.categoryId === categoryId)
   }
 
-  const handleVote = (categoryId: string) => {
+  const handleVote = async (categoryId: string) => {
     const candidateName = selectedCandidates[categoryId]
     if (!candidateName || hasUserVotedInCategory(categoryId)) return
 
-    const newVote: VoteType = {
-      userId: currentUser.id,
-      categoryId,
-      candidateName,
-      timestamp: Date.now(),
-    }
+    try {
+      const response = await fetch('/api/votes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: currentUser.id,
+          categoryId,
+          candidateName,
+        })
+      })
 
-    setVotes([...votes, newVote])
-    setShowConfirmation(true)
-    setTimeout(() => setShowConfirmation(false), 2000)
+      if (response.ok) {
+        // Recharger les votes pour voir le nouveau vote
+        await refetchVotes()
+        setShowConfirmation(true)
+        setTimeout(() => setShowConfirmation(false), 2000)
+      } else {
+        const error = await response.json()
+        console.error("Erreur lors du vote:", error)
+      }
+    } catch (error) {
+      console.error("Erreur lors du vote:", error)
+    }
   }
 
   const toggleCategory = (categoryId: string) => {
@@ -263,7 +276,7 @@ export function VoteSection({
                             onClick={() => handleVote(category.id)}
                             className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground"
                           >
-                            <Vote className="w-4 h-4 mr-2" />
+                            <VoteIcon className="w-4 h-4 mr-2" />
                             Confirmer le vote pour {selectedCandidates[category.id]}
                           </Button>
                         )}

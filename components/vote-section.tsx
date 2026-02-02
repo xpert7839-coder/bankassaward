@@ -28,7 +28,7 @@ export function VoteSection({
   const [selectedCandidates, setSelectedCandidates] = useState<Record<string, string>>({})
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({})
-  const [selectedProfile, setSelectedProfile] = useState<Candidate | null>(null)
+  const [selectedProfile, setSelectedProfile] = useState<{ candidate: Candidate; categoryId: string } | null>(null)
 
   if (!currentUser) {
     return (
@@ -64,26 +64,45 @@ export function VoteSection({
     return votes.find((v) => v.userId === currentUser.id && v.categoryId === categoryId)
   }
 
-  const handleVote = async (categoryId: string) => {
-    const candidateName = selectedCandidates[categoryId]
-    if (!candidateName || hasUserVotedInCategory(categoryId)) return
+  const handleVote = async (categoryId: string, candidateName?: string) => {
+    const finalCandidateName = candidateName || selectedCandidates[categoryId]
+    
+    console.log("handleVote appelé:", {
+      categoryId,
+      candidateName,
+      finalCandidateName,
+      currentUser: currentUser?.id,
+      hasVoted: hasUserVotedInCategory(categoryId)
+    })
+    
+    if (!finalCandidateName || hasUserVotedInCategory(categoryId)) {
+      console.log("Vote bloqué - finalCandidateName:", finalCandidateName, "hasVoted:", hasUserVotedInCategory(categoryId))
+      return
+    }
 
     try {
+      const voteData = {
+        userId: currentUser.id,
+        categoryId,
+        candidateName: finalCandidateName,
+      }
+      
+      console.log("Envoi du vote:", voteData)
+      
       const response = await fetch('/api/votes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          userId: currentUser.id,
-          categoryId,
-          candidateName,
-        })
+        body: JSON.stringify(voteData)
       })
+
+      console.log("Réponse API:", response.status, response.statusText)
 
       if (response.ok) {
         // Recharger les votes pour voir le nouveau vote
         await refetchVotes()
         setShowConfirmation(true)
         setTimeout(() => setShowConfirmation(false), 2000)
+        console.log("Vote réussi!")
       } else {
         const error = await response.json()
         console.error("Erreur lors du vote:", error)
@@ -217,7 +236,7 @@ export function VoteSection({
                                 {/* Candidate Image */}
                                 <div
                                   className="relative aspect-square overflow-hidden"
-                                  onClick={() => setSelectedProfile(candidate)}
+                                  onClick={() => setSelectedProfile({ candidate, categoryId: category.id })}
                                 >
                                   <img
                                     src={candidate.image || "/placeholder.svg"}
@@ -374,8 +393,8 @@ export function VoteSection({
                 <div className="flex-shrink-0">
                   <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl overflow-hidden mx-auto sm:mx-0 border-4 border-primary/20">
                     <img
-                      src={selectedProfile.image || "/placeholder.svg"}
-                      alt={selectedProfile.name}
+                      src={selectedProfile.candidate.image || "/placeholder.svg"}
+                      alt={selectedProfile.candidate.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -384,55 +403,55 @@ export function VoteSection({
                 {/* Profile Info */}
                 <div className="flex-1 text-center sm:text-left">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    {selectedProfile.name}
+                    {selectedProfile.candidate.name}
                   </h2>
-                  {selectedProfile.alias && (
-                    <p className="text-primary font-medium mb-2">{selectedProfile.alias}</p>
+                  {selectedProfile.candidate.alias && (
+                    <p className="text-primary font-medium mb-2">{selectedProfile.candidate.alias}</p>
                   )}
-                  <p className="text-muted-foreground leading-relaxed mb-4">{selectedProfile.bio}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">{selectedProfile.candidate.bio}</p>
 
                   {/* Music Info */}
-                  {(selectedProfile.songCount || selectedProfile.candidateSong || selectedProfile.audioFile) && (
+                  {(selectedProfile.candidate.songCount || selectedProfile.candidate.candidateSong || selectedProfile.candidate.audioFile) && (
                     <div className="mb-4">
                       <h3 className="text-sm font-semibold text-primary mb-2 flex items-center gap-2 justify-center sm:justify-start">
                         <Sparkles className="w-4 h-4" />
                         Informations Musicales
                       </h3>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
-                        {selectedProfile.songCount && (
+                        {selectedProfile.candidate.songCount && (
                           <div className="bg-muted/30 rounded-lg p-3">
                             <p className="text-xs text-muted-foreground">Nombre de chansons</p>
-                            <p className="font-semibold">{selectedProfile.songCount}</p>
+                            <p className="font-semibold">{selectedProfile.candidate.songCount}</p>
                           </div>
                         )}
-                        {selectedProfile.candidateSong && (
+                        {selectedProfile.candidate.candidateSong && (
                           <div className="bg-muted/30 rounded-lg p-3">
                             <p className="text-xs text-muted-foreground">Chanson candidate</p>
-                            <p className="font-semibold">{selectedProfile.candidateSong}</p>
+                            <p className="font-semibold">{selectedProfile.candidate.candidateSong}</p>
                           </div>
                         )}
                       </div>
                       
                       {/* Audio Preview */}
-                      {selectedProfile.audioFile && (
+                      {selectedProfile.candidate.audioFile && (
                         <AudioPreview
-                          audioUrl={selectedProfile.audioFile}
-                          songTitle={selectedProfile.candidateSong}
-                          artistName={selectedProfile.name}
+                          audioUrl={selectedProfile.candidate.audioFile}
+                          songTitle={selectedProfile.candidate.candidateSong}
+                          artistName={selectedProfile.candidate.name}
                         />
                       )}
                     </div>
                   )}
 
                   {/* Achievements */}
-                  {selectedProfile.achievements && selectedProfile.achievements.length > 0 && (
+                  {selectedProfile.candidate.achievements && selectedProfile.candidate.achievements.length > 0 && (
                     <div className="mt-4">
                       <h3 className="text-sm font-semibold text-primary mb-2 flex items-center gap-2 justify-center sm:justify-start">
                         <Trophy className="w-4 h-4" />
                         Réalisations notables
                       </h3>
                       <ul className="space-y-2">
-                        {selectedProfile.achievements.map((achievement, idx) => (
+                        {selectedProfile.candidate.achievements.map((achievement, idx) => (
                           <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
                             <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
                             {achievement}
@@ -444,10 +463,37 @@ export function VoteSection({
                 </div>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-border/50">
+              <div className="mt-6 pt-6 border-t border-border/50 space-y-3">
+                {/* Vote Button */}
+                {!hasUserVotedInCategory(selectedProfile.categoryId) && (
+                  <Button
+                    onClick={() => {
+                      handleVote(selectedProfile.categoryId, selectedProfile.candidate.name)
+                      setSelectedProfile(null)
+                    }}
+                    className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground"
+                  >
+                    <VoteIcon className="w-4 h-4 mr-2" />
+                    Voter pour {selectedProfile.candidate.name}
+                  </Button>
+                )}
+                
+                {/* Already Voted Message */}
+                {hasUserVotedInCategory(selectedProfile.categoryId) && (
+                  <div className="w-full p-3 rounded-lg bg-muted/30 border border-muted/50">
+                    <p className="text-center text-muted-foreground text-sm">
+                      {getUserVoteInCategory(selectedProfile.categoryId)?.candidateName === selectedProfile.candidate.name 
+                        ? "Vous avez déjà voté pour ce candidat" 
+                        : "Vous avez déjà voté dans cette catégorie"}
+                    </p>
+                  </div>
+                )}
+                
+                {/* Close Button */}
                 <Button
                   onClick={() => setSelectedProfile(null)}
-                  className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground"
+                  variant="outline"
+                  className="w-full"
                 >
                   Fermer
                 </Button>

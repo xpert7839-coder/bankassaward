@@ -79,10 +79,38 @@ export function CandidateDetailModal({ candidate, category, onClose }: Candidate
             {/* Music Info */}
             {(candidate.songCount || candidate.candidateSong || candidate.audioFile) && (
               <div className="mb-6">
-                <h3 className="font-semibold mb-2 flex items-center gap-2">
+                <h3 className="font-semibold mb-4 flex items-center gap-2">
                   <Music className="w-4 h-4" />
                   Informations Musicales
                 </h3>
+                
+                {/* Chanson candidate - Section principale */}
+                {candidate.candidateSong && (
+                  <div className="bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20 rounded-xl p-4 mb-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                        <Music className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Chanson candidate</p>
+                        <p className="font-semibold text-lg">{candidate.candidateSong}</p>
+                      </div>
+                    </div>
+                    
+                    {/* Audio Preview si disponible */}
+                    {candidate.audioFile && (
+                      <div className="mt-3">
+                        <AudioPreview
+                          audioUrl={candidate.audioFile}
+                          songTitle={candidate.candidateSong}
+                          artistName={candidate.name}
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+                
+                {/* Informations additionnelles */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {candidate.songCount && (
                     <div className="bg-muted/30 rounded-lg p-3">
@@ -90,20 +118,20 @@ export function CandidateDetailModal({ candidate, category, onClose }: Candidate
                       <p className="font-semibold">{candidate.songCount}</p>
                     </div>
                   )}
-                  {candidate.candidateSong && (
+                  {candidate.audioFile && !candidate.candidateSong && (
                     <div className="bg-muted/30 rounded-lg p-3">
-                      <p className="text-sm text-muted-foreground">Chanson candidate</p>
-                      <p className="font-semibold">{candidate.candidateSong}</p>
+                      <p className="text-sm text-muted-foreground">Extrait audio</p>
+                      <p className="font-semibold">Disponible</p>
                     </div>
                   )}
                 </div>
                 
-                {/* Audio Preview */}
-                {candidate.audioFile && (
+                {/* Audio Preview seul si pas de chanson candidate */}
+                {candidate.audioFile && !candidate.candidateSong && (
                   <div className="mt-4">
                     <AudioPreview
                       audioUrl={candidate.audioFile}
-                      songTitle={candidate.candidateSong}
+                      songTitle="Extrait audio"
                       artistName={candidate.name}
                     />
                   </div>

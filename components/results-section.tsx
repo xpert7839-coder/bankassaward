@@ -253,7 +253,7 @@ export function ResultsSection({
               transition={{ delay: 0.8 }}
               className="text-muted-foreground mb-8 text-lg"
             >
-              Prix hommage en l'honneur de Kassim Guindo
+              Prix d'Honneur Leadership - Révélation spéciale
             </motion.p>
 
             <motion.div
@@ -534,7 +534,7 @@ export function ResultsSection({
                     >
                       <Crown className="w-4 h-4 text-amber-500" />
                       <span className="text-sm text-amber-600 dark:text-amber-400 font-medium">
-                        Hommage à Kassim Guindo
+                        Lauréat du Trophée Leadership
                       </span>
                     </motion.div>
                   </div>

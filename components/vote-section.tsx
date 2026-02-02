@@ -89,7 +89,11 @@ export function VoteSection({
         // Recharger les votes pour voir le nouveau vote
         await refetchVotes()
         setShowConfirmation(true)
-        setTimeout(() => setShowConfirmation(false), 2000)
+        setTimeout(() => {
+          setShowConfirmation(false)
+          // Rediriger vers les résultats après le vote
+          setCurrentPage("results")
+        }, 1500)
       } else {
         const error = await response.json()
         console.error("Erreur lors du vote:", error)

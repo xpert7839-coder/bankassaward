@@ -366,7 +366,7 @@ export function AdminSection({
                       <Crown className={`w-6 h-6 ${leadershipRevealed ? "text-amber-500" : "text-muted-foreground"}`} />
                     </div>
                     <div>
-                      <p className="font-semibold">Prix Leadership - Hommage à Kassim</p>
+                      <p className="font-semibold">Prix Leadership - Hommage Spécial</p>
                       <p className="text-muted-foreground text-sm">
                         {leadershipRevealed ? "Le prix a été révélé au public" : "Le prix est masqué pour le moment"}
                       </p>
@@ -716,9 +716,9 @@ export function AdminSection({
                     <Crown className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold">Prix Leadership - Hommage à Kassim</h2>
+                    <h2 className="text-xl font-bold">Prix Leadership - Hommage Spécial</h2>
                     <p className="text-muted-foreground">
-                      Ce prix spécial honore la mémoire et l'héritage de Kassim Guindo
+                      Ce prix spécial honore la mémoire et l'héritage du lauréat
                     </p>
                   </div>
                 </div>
@@ -773,7 +773,7 @@ export function AdminSection({
                         <ImageUpload
                           currentImage={leadershipImage}
                           onImageChange={setLeadershipImage}
-                          label="Photo de Kassim"
+                          label="Photo du lauréat"
                         />
 
                         <div>
@@ -815,12 +815,12 @@ export function AdminSection({
                               categories.find((c) => c.isLeadershipPrize)?.preAssignedWinnerImage ||
                               "/kassim-guindo-portrait-leadership.jpg"
                             }
-                            alt="Kassim Guindo"
+                            alt="Lauréat du Trophée Leadership"
                             className="w-24 h-24 rounded-2xl border-4 border-background object-cover shadow-xl"
                           />
                           <div className="mb-2 flex-1">
-                            <h3 className="text-2xl font-bold">Kassim Guindo</h3>
-                            <p className="text-amber-500 font-medium">Lauréat du Trophée Leadership</p>
+                            <h3 className="text-2xl font-bold">Lauréat du Trophée Leadership</h3>
+                            <p className="text-amber-500 font-medium">Prix d'Honneur Leadership</p>
                           </div>
                           <Button onClick={handleStartEditLeadership} variant="outline" size="sm">
                             <Edit className="w-4 h-4 mr-2" />

@@ -58,6 +58,7 @@ export function AuthSection({ setCurrentPage, setCurrentUser, users, setUsers }:
 
     await new Promise((r) => setTimeout(r, 500))
 
+    // Vérifier si c'est l'admin
     if (loginEmail === SUPER_ADMIN_EMAIL && loginPassword === SUPER_ADMIN_PASSWORD) {
       const adminUser: User = {
         id: "super_admin_001",
@@ -73,20 +74,25 @@ export function AuthSection({ setCurrentPage, setCurrentUser, users, setUsers }:
       return
     }
 
-    const foundUser = users.find((u) => u.email === loginEmail)
-    if (foundUser) {
-      // Check password if stored
-      const storedPassword = (foundUser as User & { password?: string }).password
-      if (storedPassword && storedPassword !== loginPassword) {
-        setMessage({ type: "error", text: "Mot de passe incorrect" })
-        setIsLoading(false)
-        return
+    // Vérifier l'authentification via l'API
+    try {
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: loginEmail, password: loginPassword })
+      })
+      
+      if (response.ok) {
+        const user = await response.json()
+        setCurrentUser(user)
+        setMessage({ type: "success", text: "Connexion réussie !" })
+        setTimeout(() => setCurrentPage("vote"), 1000)
+      } else {
+        const error = await response.json()
+        setMessage({ type: "error", text: error.error || "Email ou mot de passe incorrect" })
       }
-      setCurrentUser(foundUser)
-      setMessage({ type: "success", text: "Connexion réussie !" })
-      setTimeout(() => setCurrentPage("vote"), 1000)
-    } else {
-      setMessage({ type: "error", text: "Email ou mot de passe incorrect" })
+    } catch (error) {
+      setMessage({ type: "error", text: "Erreur de connexion" })
     }
 
     setIsLoading(false)

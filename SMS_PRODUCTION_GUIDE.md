@@ -180,7 +180,7 @@ AFRICASTALKING_API_KEY=votre_vraie_cle_api
 
 ### **Support Africa's Talking**
 - **Email** : support@africastalking.com
-- **Téléphone** : +254 719 085 000
+- **Téléphone** : +223 92592294
 - **Documentation** : https://build.at-labs.io/docs/sms%2Fsending
 
 ## 🔒 Sécurité
@@ -204,7 +204,7 @@ AFRICASTALKING_API_KEY=votre_vraie_cle_api
 
 ### **Optimisations**
 - **Batch processing** : Pour les envois en masse
-- **Queue system** : Pour gérer les pics
+- **Queue system** : Pour gérer les picsadmin123
 - **Fallback provider** : Twilio en backup
 
 ---

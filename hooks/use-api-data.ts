@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 export interface User {
   id: string
   name: string
-  email: string
+  email?: string
   domain?: string
   city?: string
   phone?: string

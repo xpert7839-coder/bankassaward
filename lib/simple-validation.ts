@@ -130,11 +130,10 @@ export function createSimpleUser(
   
   return {
     name: data.fullName,
-    email: `${normalizePhone(data.phone).replace('+', '')}@bankass-awards.sms`, // Email fictif basé sur le téléphone
+    phone: normalizePhone(data.phone),
     password: password,
     domain: data.domain,
     city: data.city,
-    phone: normalizePhone(data.phone),
     role: "VOTER" as const
   }
 }

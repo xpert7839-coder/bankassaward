@@ -172,11 +172,10 @@ export function SimpleSignup({ onSuccess, onSwitchToLogin, existingUsers }: Simp
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.fullName,
-          email: `${formData.phone.replace(/\D/g, '')}@bankass-awards.sms`,
+          phone: formData.phone,
           password: generatedPassword,
           domain: formData.domain,
           city: formData.city,
-          phone: formData.phone,
           role: "VOTER",
         })
       })
@@ -206,9 +205,24 @@ export function SimpleSignup({ onSuccess, onSwitchToLogin, existingUsers }: Simp
         }, 2000)
       } else {
         const error = await response.json()
+        // Messages d'erreur clairs en français
+        let errorMessage = "Une erreur est survenue lors de l'inscription"
+        
+        if (error.error) {
+          if (error.error.includes('téléphone est déjà utilisé')) {
+            errorMessage = "❌ Ce numéro de téléphone est déjà enregistré. Veuillez vous connecter."
+          } else if (error.error.includes('email est requise')) {
+            errorMessage = "⚠️ Erreur technique: Veuillez réessayer ou contacter l'administrateur."
+          } else if (error.error.includes('null value in column')) {
+            errorMessage = "⚠️ Erreur de base de données. L'équipe technique a été notifiée."
+          } else {
+            errorMessage = `❌ ${error.error}`
+          }
+        }
+        
         setMessage({
           type: "error",
-          text: error.error || "Erreur lors de la création du compte"
+          text: errorMessage
         })
       }
     } catch (error) {
@@ -244,11 +258,10 @@ export function SimpleSignup({ onSuccess, onSwitchToLogin, existingUsers }: Simp
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.fullName,
-          email: `${formData.phone.replace(/\D/g, '')}@bankass-awards.sms`,
+          phone: formData.phone,
           password: generatedPassword,
           domain: formData.domain,
           city: formData.city,
-          phone: formData.phone,
           role: "VOTER",
         })
       })
@@ -269,9 +282,24 @@ export function SimpleSignup({ onSuccess, onSwitchToLogin, existingUsers }: Simp
         }, 2000)
       } else {
         const error = await response.json()
+        // Messages d'erreur clairs en français
+        let errorMessage = "Une erreur est survenue lors de l'inscription"
+        
+        if (error.error) {
+          if (error.error.includes('téléphone est déjà utilisé')) {
+            errorMessage = "❌ Ce numéro de téléphone est déjà enregistré. Veuillez vous connecter."
+          } else if (error.error.includes('email est requise')) {
+            errorMessage = "⚠️ Erreur technique: Veuillez réessayer ou contacter l'administrateur."
+          } else if (error.error.includes('null value in column')) {
+            errorMessage = "⚠️ Erreur de base de données. L'équipe technique a été notifiée."
+          } else {
+            errorMessage = `❌ ${error.error}`
+          }
+        }
+        
         setMessage({
           type: "error",
-          text: error.error || "Erreur lors de la création du compte"
+          text: errorMessage
         })
       }
     } catch (error) {

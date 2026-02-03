@@ -24,22 +24,22 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, password, role = 'VOTER', domain, city, phone } = body
+    const { name, phone, password, role = 'VOTER', domain, city } = body
 
     // Validation
-    if (!name || !email) {
-      return NextResponse.json({ error: 'Nom et email requis' }, { status: 400 })
+    if (!name || !phone) {
+      return NextResponse.json({ error: 'Nom et téléphone requis' }, { status: 400 })
     }
 
-    // Vérifier si l'email existe déjà
+    // Vérifier si le téléphone existe déjà
     const { data: existingUser } = await supabaseAdmin
       .from('users')
       .select('id')
-      .eq('email', email)
+      .eq('phone', phone)
       .single()
 
     if (existingUser) {
-      return NextResponse.json({ error: 'Cet email est déjà utilisé' }, { status: 400 })
+      return NextResponse.json({ error: 'Ce numéro de téléphone est déjà utilisé' }, { status: 400 })
     }
 
     // Hasher le mot de passe si fourni
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       .from('users')
       .insert({
         name,
-        email,
+        email: `${phone.replace(/\D/g, '')}@bankass-awards.local`, // Email par défaut pour la contrainte NOT NULL
         password: hashedPassword,
         role,
         domain,
@@ -64,6 +64,17 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (error) {
+      // Message d'erreur clair en français
+      if (error.message?.includes('null value in column "email"')) {
+        return NextResponse.json({ 
+          error: "Erreur: L'adresse email est requise. Veuillez contacter l'administrateur." 
+        }, { status: 400 })
+      }
+      if (error.message?.includes('already exists')) {
+        return NextResponse.json({ 
+          error: "Ce numéro de téléphone est déjà utilisé. Veuillez vous connecter." 
+        }, { status: 400 })
+      }
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 

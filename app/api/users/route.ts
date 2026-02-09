@@ -55,8 +55,10 @@ export async function POST(request: NextRequest) {
     // Obtenir l'IP client
     const clientIP = await getClientIP(request)
 
-    // Vérifier les limites de device/IP si device_id est fourni
-    if (device_id) {
+    // TEMPORAIREMENT DÉSACTIVÉ: Limite de comptes pour permettre les inscriptions en production
+    // Le problème vient du fait que tous les utilisateurs partagent la même IP en production
+    // TODO: Réimplémenter avec une meilleure détection d'IP unique
+    if (false && device_id) {
       const { canCreate, existingAccounts } = await checkDeviceAccountLimit(
         supabaseAdmin,
         device_id,

@@ -8,6 +8,9 @@
   "functions": {
     "app/**/*.tsx": {
       "maxDuration": 30
+    },
+    "api/index.js": {
+      "maxDuration": 30
     }
   },
   "headers": [

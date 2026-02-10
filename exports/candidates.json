@@ -1,0 +1,86 @@
+[
+  {
+    "id": "cand_music_001",
+    "category_id": "cat_music_001",
+    "name": "Oumou Sangaré",
+    "alias": "La Diva du Mali",
+    "image": "/uploads/candidates/oumou-sangare.jpg",
+    "bio": "Artiste de renommée internationale, ambassadrice de la musique malienne",
+    "achievements": "[\"Victoires de la Musique 2023\",\"Grammy Awards Nomination 2022\",\"Artiste de l'année au Mali 2021\"]",
+    "song_count": 12,
+    "candidate_song": "Djereya",
+    "audio_file": "/uploads/audio/djereya.mp3"
+  },
+  {
+    "id": "cand_music_002",
+    "category_id": "cat_music_001",
+    "name": "Ali Farka Touré",
+    "alias": "Le Guitare Bleu",
+    "image": "/uploads/candidates/ali-farka.jpg",
+    "bio": "Légende de la musique africaine, pionnier du blues malien",
+    "achievements": "[\"Grammy Awards Winner 2004\",\"BBC African Music Awards 2020\",\"Legende de la Musique Africaine 2019\"]",
+    "song_count": 15,
+    "candidate_song": "Savane",
+    "audio_file": "/uploads/audio/savane.mp3"
+  },
+  {
+    "id": "cand_music_003",
+    "category_id": "cat_music_001",
+    "name": "Salif Keita",
+    "alias": "L'Orfelin Dor",
+    "image": "/uploads/candidates/salif-keita.jpg",
+    "bio": "Voix d'or du Mali, pionnier de la musique africaine moderne",
+    "achievements": "[\"Victoires de la Musique 2022\",\"African Music Awards 2021\",\"Artiste légendaire 2020\"]",
+    "song_count": 18,
+    "candidate_song": "Mandjou",
+    "audio_file": "/uploads/audio/mandjou.mp3"
+  },
+  {
+    "id": "cand_audio_001",
+    "category_id": "cat_audio_001",
+    "name": "Cheick Oumar Sissoko",
+    "alias": "Le Cinéaste",
+    "image": "/uploads/candidates/cheick-oumar.jpg",
+    "bio": "Réalisateur de renom, pionnier du cinéma malien",
+    "achievements": "[\"Festival de Cannes Sélection 2023\",\"Prix du Meilleur Film Africain 2022\",\"Médaille du Cinéma Malien 2021\"]",
+    "song_count": null,
+    "candidate_song": null,
+    "audio_file": null
+  },
+  {
+    "id": "cand_audio_002",
+    "category_id": "cat_audio_001",
+    "name": "Aminata Traoré",
+    "alias": "La Productrice",
+    "image": "/uploads/candidates/aminata-traore.jpg",
+    "bio": "Productrice et réalisatrice, voix du cinéma malien moderne",
+    "achievements": "[\"Prix de la Meilleure Production 2023\",\"Festival International de Film 2022\",\"Productrice de l'année 2021\"]",
+    "song_count": null,
+    "candidate_song": null,
+    "audio_file": null
+  },
+  {
+    "id": "cand_journalism_001",
+    "category_id": "cat_journalism_001",
+    "name": "Moussa Kaka",
+    "alias": "Le Reporter",
+    "image": "/uploads/candidates/moussa-kaka.jpg",
+    "bio": "Journaliste d'investigation, défenseur de la liberté de presse",
+    "achievements": "[\"Prix International du Journalisme 2023\",\"Reporter de l'année au Mali 2022\",\"Médaille du Courage 2021\"]",
+    "song_count": null,
+    "candidate_song": null,
+    "audio_file": null
+  },
+  {
+    "id": "cand_journalism_002",
+    "category_id": "cat_journalism_001",
+    "name": "Aïssata Cissé",
+    "alias": "La Journaliste",
+    "image": "/uploads/candidates/aissata-cisse.jpg",
+    "bio": "Journaliste politique, analyste et présentatrice renommée",
+    "achievements": "[\"Meilleure Journaliste 2023\",\"Prix d'Excellence en Média 2022\",\"Présentatrice TV de l'année 2021\"]",
+    "song_count": null,
+    "candidate_song": null,
+    "audio_file": null
+  }
+]

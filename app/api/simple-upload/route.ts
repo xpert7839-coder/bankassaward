@@ -74,9 +74,9 @@ export async function POST(request: NextRequest) {
       
       // Créer le dossier s'il n'existe pas
       const uploadDir = join(process.cwd(), 'public', 'uploads', 'candidates')
-      // if (!existsSync(uploadDir)) {
-      //   await mkdir(uploadDir, { recursive: true })
-      // }
+      if (!existsSync(uploadDir)) {
+        await mkdir(uploadDir, { recursive: true })
+      }
 
       // Générer un nom de fichier unique
       const timestamp = Date.now()
@@ -90,8 +90,10 @@ export async function POST(request: NextRequest) {
       const buffer = Buffer.from(arrayBuffer)
       await writeFile(filePath, buffer)
 
-      // Retourner l'URL locale
-      const publicUrl = `http://localhost:3000/uploads/candidates/${fileName}`
+      // Retourner l'URL locale avec le bon port
+      const requestUrl = new URL(request.url)
+      const port = requestUrl.port || '3000'
+      const publicUrl = `http://localhost:${port}/uploads/candidates/${fileName}`
       
       console.log('✅ Fichier uploadé localement:', publicUrl)
       

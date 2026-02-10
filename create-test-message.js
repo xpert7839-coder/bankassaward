@@ -1,7 +1,7 @@
 // Créer un message admin de test
 const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = 'https://vamthumimnkfdcokfmor.supabase.co';
+const supabaseUrl = 'https://ilfsbpuyvisyfztqrccg.supabase.co';
 const serviceRoleKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbXRodW1pbW5rZmRjb2tmbW9yIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2OTk4NzY3MiwiZXhwIjoyMDg1NTYzNjcyfQ.HqlD0qlhAMtM-Jj_gLuOewnG3xzVnfj83M4VjiLSwdM';
 
 const supabase = createClient(supabaseUrl, serviceRoleKey);

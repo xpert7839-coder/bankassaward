@@ -34,9 +34,9 @@
 Dans **Environment** → **Add Environment Variable** :
 
 ```
-DATABASE_URL=postgresql://postgres:l5OVhoXNjhPTjocp@db.vamthumimnkfdcokfmor.supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres:l5OVhoXNjhPTjocp@db.ilfsbpuyvisyfztqrccg.supabase.co:5432/postgres
 
-NEXT_PUBLIC_SUPABASE_URL=https://vamthumimnkfdcokfmor.supabase.co
+NEXT_PUBLIC_SUPABASE_URL=https://ilfsbpuyvisyfztqrccg.supabase.co
 
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbXRodW1pbW5rZmRjb2tmbW9yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk5ODc2NzIsImV4cCI6MjA4NTU2MzY3Mn0.-9B87ZcM9LLamB0sQjZM60Jz4Hlwg1npeFfIj-Bg_TA
 

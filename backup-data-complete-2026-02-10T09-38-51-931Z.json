@@ -1,0 +1,143 @@
+{
+  "users": [
+    {
+      "id": "super_admin_001",
+      "name": "Super Admin",
+      "email": "admin@bankassawards.com",
+      "role": "SUPER_ADMIN",
+      "phone": "",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "revelation",
+      "name": "Révélation de l'Année",
+      "description": "Découverte du nouveau talent qui a marqué l'année",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "meilleure-chanson",
+      "name": "Meilleure Chanson de l'Année",
+      "description": "Le titre qui a marqué les esprits cette année",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "meilleur-artiste",
+      "name": "Meilleur Artiste de l'Année",
+      "description": "Récompenser l'excellence artistique et l'impact culturel",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "rev-1",
+      "category_id": "revelation",
+      "name": "Bakary Sangaré",
+      "alias": "Baka",
+      "image": "/african-man-artist-portrait-young.jpg",
+      "bio": "Jeune artiste émergent de Bankass, son style unique mélange tradition et modernité.",
+      "achievements": [
+        "Premier concert solo à Bamako",
+        "100 000 vues sur YouTube",
+        "Artiste local de l'année 2024"
+      ],
+      "song_count": 5,
+      "candidate_song": "Bankass Revolution",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "rev-2",
+      "category_id": "revelation",
+      "name": "Aminata Dicko",
+      "alias": "Mina",
+      "image": "/african-woman-singer-portrait-rising.jpg",
+      "bio": "Voix douce mais puissante, elle chante l'espoir et la résilience de la jeunesse malienne.",
+      "achievements": [
+        "Premier album en production",
+        "Collaboration avec Oumou Sangaré",
+        "Révélation du Festival au Désert"
+      ],
+      "song_count": 8,
+      "candidate_song": "Espoir",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "mc-1",
+      "category_id": "meilleure-chanson",
+      "name": "Oumou Sangaré",
+      "alias": "La Dame de Mopti",
+      "image": "/music-album-cover-gold-artistic.jpg",
+      "bio": "Titre phénomène ayant battu tous les records de streaming, devenu un hymne générationnel.",
+      "achievements": [
+        "1 milliard de streams",
+        "Disque de diamant",
+        "Chanson de la décennie"
+      ],
+      "song_count": 12,
+      "candidate_song": "Djadja",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "mc-2",
+      "category_id": "meilleure-chanson",
+      "name": "Fatoumata Diawara",
+      "alias": "Fatou",
+      "image": "/music-album-cover-african-artistic.jpg",
+      "bio": "Chanson engagée célébrant la paix et l'unité au Mali, mêlant sonorités traditionnelles.",
+      "achievements": [
+        "Prix de la meilleure chanson africaine",
+        "Message de paix",
+        "Clip primé"
+      ],
+      "song_count": 15,
+      "candidate_song": "Kouma",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "ma-1",
+      "category_id": "meilleur-artiste",
+      "name": "Rokia Traoré",
+      "alias": "La Voix d'Or",
+      "image": "/african-woman-musician-portrait-artistic.jpg",
+      "bio": "Chanteuse, guitariste et compositrice malienne, figure majeure de la musique africaine contemporaine.",
+      "achievements": [
+        "Victoire de la Musique",
+        "Collaboration internationale",
+        "Directrice artistique du Festival au Désert"
+      ],
+      "song_count": 45,
+      "candidate_song": "Mali Sadio",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    },
+    {
+      "id": "ma-2",
+      "category_id": "meilleur-artiste",
+      "name": "Aya Nakamura",
+      "alias": "La Reine du Pop Urbaine",
+      "image": "/african-woman-singer-portrait-glamour.jpg",
+      "bio": "Chanteuse franco-malienne, artiste francophone la plus écoutée au monde.",
+      "achievements": [
+        "Album de diamant",
+        "NRJ Music Award",
+        "Artiste francophone #1 mondial"
+      ],
+      "song_count": 32,
+      "candidate_song": "Djadja",
+      "created_at": "2026-02-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z"
+    }
+  ],
+  "votes": [],
+  "notifications": [],
+  "admin_messages": []
+}

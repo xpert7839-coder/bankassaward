@@ -3,7 +3,7 @@
 ## 🚨 **Problèmes Identifiés**
 
 ### ❌ **URLs Incorrectes**
-- `NEXT_PUBLIC_SUPABASE_URL=https://vamthumimnkfdcokfmor.supabase.co` ❌
+- `NEXT_PUBLIC_SUPABASE_URL=https://ilfsbpuyvisyfztqrccg.supabase.co` ❌
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_rxI5prOx2rcr8a1AgxW0Jw_LGREY4Zl` ❌
 
 ### ❌ **Format Invalide**

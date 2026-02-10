@@ -1,7 +1,7 @@
 const { createClient } = require('@supabase/supabase-js');
 
 // Configuration avec clé anon (pour lecture)
-const supabaseUrl = 'https://vamthumimnkfdcokfmor.supabase.co';
+const supabaseUrl = 'https://ilfsbpuyvisyfztqrccg.supabase.co';
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvdHhtaHFoa2NzYXd2amp3eGJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMzU0OTQsImV4cCI6MjA4NTkxMTQ5NH0.YJ2fxkICoxwp3rmwRjpuESI0gmtINi7S9kzu9f8JUrE';
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);

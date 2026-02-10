@@ -7,13 +7,13 @@ Allez sur votre dashboard Render → Web Service → Environment
 ### **1. Database URL**
 ```
 Nom: DATABASE_URL
-Valeur: postgresql://postgres:l5OVhoXNjhPTjocp@db.vamthumimnkfdcokfmor.supabase.co:5432/postgres
+Valeur: postgresql://postgres:l5OVhoXNjhPTjocp@db.ilfsbpuyvisyfztqrccg.supabase.co:5432/postgres
 ```
 
 ### **2. Supabase Public URL**
 ```
 Nom: NEXT_PUBLIC_SUPABASE_URL
-Valeur: https://vamthumimnkfdcokfmor.supabase.co
+Valeur: https://ilfsbpuyvisyfztqrccg.supabase.co
 ```
 
 ### **3. Supabase Anonymous Key**

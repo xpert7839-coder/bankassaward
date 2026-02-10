@@ -42,7 +42,7 @@ Value: cname.vercel-dns.com
 ## 5. Variables d'environnement
 Dans Vercel Dashboard > Environment Variables:
 ```
-NEXT_PUBLIC_SUPABASE_URL=https://vamthumimnkfdcokfmor.supabase.co
+NEXT_PUBLIC_SUPABASE_URL=https://ilfsbpuyvisyfztqrccg.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_rxI5prOx2rcr8a1AgxW0Jw_LGREY4Zl
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```

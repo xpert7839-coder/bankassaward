@@ -12,10 +12,10 @@ Tester la connexion à Supabase et afficher les informations depuis la base de d
 
 ### Variables d'Environnement (.env.local)
 ```
-NEXT_PUBLIC_SUPABASE_URL=https://vamthumimnkfdcokfmor.supabase.co
+NEXT_PUBLIC_SUPABASE_URL=https://ilfsbpuyvisyfztqrccg.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvdHhtaHFoa2NzYXd2amp3eGJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzMzU0OTQsImV4cCI6MjA4NTkxMTQ5NH0.YJ2fxkICoxwp3rmwRjpuESI0gmtINi7S9kzu9f8JUrE
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvdHhtaHFoa2NzYXd2amp3eGJjIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MDMzNTQ5NCwiZXhwIjoyMDg1OTExNDk0fQ.3D_rGf1RxA3HiEZiR1VhfXzdndoAh3gMNs5qYXQ-zgo
-DATABASE_URL=postgresql://postgres:l5OVhoXNjhPTjocp@db.vamthumimnkfdcokfmor.supabase.co:5432/postgres
+DATABASE_URL=postgresql://postgres:l5OVhoXNjhPTjocp@db.ilfsbpuyvisyfztqrccg.supabase.co:5432/postgres
 ```
 
 ---
@@ -55,7 +55,7 @@ Détails: {
 **Fichier**: `test-direct-db.js`
 **Résultat**: ❌ ÉCHEC - Host non trouvé
 ```
-💥 Erreur critique de connexion: getaddrinfo ENOTFOUND db.vamthumimnkfdcokfmor.supabase.co
+💥 Erreur critique de connexion: getaddrinfo ENOTFOUND db.ilfsbpuyvisyfztqrccg.supabase.co
 ```
 
 ### ❌ Test 4: API Web REST

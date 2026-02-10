@@ -190,6 +190,48 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'ID utilisateur requis' }, { status: 400 })
     }
 
+    // Supprimer d'abord les enregistrements associés pour respecter les contraintes de clé étrangère
+    // 1. Supprimer les votes de l'utilisateur
+    const { error: votesError } = await supabaseAdmin
+      .from('votes')
+      .delete()
+      .eq('user_id', id)
+
+    if (votesError) {
+      console.error('Erreur suppression votes:', votesError)
+    }
+
+    // 2. Supprimer les sessions de l'utilisateur
+    const { error: sessionsError } = await supabaseAdmin
+      .from('sessions')
+      .delete()
+      .eq('user_id', id)
+
+    if (sessionsError) {
+      console.error('Erreur suppression sessions:', sessionsError)
+    }
+
+    // 3. Supprimer les logs d'admin de l'utilisateur
+    const { error: logsError } = await supabaseAdmin
+      .from('admin_logs')
+      .delete()
+      .eq('user_id', id)
+
+    if (logsError) {
+      console.error('Erreur suppression admin logs:', logsError)
+    }
+
+    // 4. Supprimer les enregistrements de device de l'utilisateur
+    const { error: deviceRegistrationsError } = await supabaseAdmin
+      .from('device_registrations')
+      .delete()
+      .eq('user_id', id)
+
+    if (deviceRegistrationsError) {
+      console.error('Erreur suppression device_registrations:', deviceRegistrationsError)
+    }
+
+    // 5. Enfin, supprimer l'utilisateur
     const { error } = await supabaseAdmin
       .from('users')
       .delete()
@@ -199,8 +241,9 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 })
     }
 
-    return NextResponse.json({ message: 'Utilisateur supprimé avec succès' })
+    return NextResponse.json({ message: 'Utilisateur et toutes ses données supprimés avec succès' })
   } catch (error) {
+    console.error('Erreur suppression utilisateur:', error)
     return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 })
   }
 }

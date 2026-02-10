@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Variables d'environnement avec valeurs par défaut
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://vamthumimnkfdcokfmor.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_rxI5prOx2rcr8a1AgxW0Jw_LGREY4Zl'
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhbXRodW1pbW5rZmRjb2tmbW9yIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2OTk4NzY3MiwiZXhwIjoyMDg1NTYzNjcyfQ.HqlD0qlhAMtM-Jj_gLuOewnG3xzVnfj83M4VjiLSwdM'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://becgpunewiwipjptkrfd.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJlY2dwdW5ld2l3aXBqcHRrcmZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA3MDg5NjksImV4cCI6MjA4NjI4NDk2OX0.y9P59wppm4TBV8YzPzfSTBQYbKo13787aLgn2oJGIoA'
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJlY2dwdW5ld2l3aXBqcHRrcmZkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MDcwODk2OSwiZXhwIjoyMDg2Mjg0OTY5fQ.xHTAQyfEfjyoSAmz_j4bheu859F7cyFTcPMQZvmreSY'
 
 // Vérification que les clés sont disponibles
 if (!supabaseUrl || !supabaseAnonKey || !supabaseServiceRoleKey) {

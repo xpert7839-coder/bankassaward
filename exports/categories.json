@@ -1,0 +1,54 @@
+[
+  {
+    "id": "cat_music_001",
+    "name": "Musique",
+    "subtitle": "Meilleur artiste de musique traditionnelle",
+    "special": false,
+    "is_leadership_prize": false,
+    "pre_assigned_winner": null,
+    "pre_assigned_winner_bio": null,
+    "pre_assigned_winner_image": null,
+    "pre_assigned_winner_achievements": "[]",
+    "pre_assigned_winner_tribute": null,
+    "leadership_revealed": false
+  },
+  {
+    "id": "cat_audio_001",
+    "name": "Audiovisuel",
+    "subtitle": "Meilleur créateur de contenu audiovisuel",
+    "special": false,
+    "is_leadership_prize": false,
+    "pre_assigned_winner": null,
+    "pre_assigned_winner_bio": null,
+    "pre_assigned_winner_image": null,
+    "pre_assigned_winner_achievements": "[]",
+    "pre_assigned_winner_tribute": null,
+    "leadership_revealed": false
+  },
+  {
+    "id": "cat_journalism_001",
+    "name": "Journalisme",
+    "subtitle": "Meilleur journaliste/Reporter",
+    "special": false,
+    "is_leadership_prize": false,
+    "pre_assigned_winner": null,
+    "pre_assigned_winner_bio": null,
+    "pre_assigned_winner_image": null,
+    "pre_assigned_winner_achievements": "[]",
+    "pre_assigned_winner_tribute": null,
+    "leadership_revealed": false
+  },
+  {
+    "id": "cat_leadership_001",
+    "name": "Prix du Leadership",
+    "subtitle": "Prix spécial pour leadership exceptionnel",
+    "special": true,
+    "is_leadership_prize": true,
+    "pre_assigned_winner": "Aïssata Konaté",
+    "pre_assigned_winner_bio": "Directrice exécutive de l'Association des Femmes Journalistes du Mali",
+    "pre_assigned_winner_image": "/uploads/leaders/aissata-konate.jpg",
+    "pre_assigned_winner_achievements": "[\"Prix International du Journalisme 2024\",\"Médaille d'Or du Mérite Culturel\",\"Leadership Féminin Africain 2023\"]",
+    "pre_assigned_winner_tribute": "Hommage à son engagement exceptionnel pour la liberté de la presse et la promotion des femmes dans les médias",
+    "leadership_revealed": false
+  }
+]
